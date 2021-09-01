@@ -1,1 +1,27 @@
-<p>header works!</p>
+<header class="header">
+  <div class="information-block">
+    <div class="container">
+      <div class="information">
+        <div class="city">
+          <mat-icon aria-hidden="false" aria-label="Example home icon"
+            >place</mat-icon
+          >
+          <button mat-button (click)="openDialog()">
+            г. {{ country$ | async }}
+          </button>
+        </div>
+        <div class="conctacts-time">
+          <app-contacts-header></app-contacts-header>
+          <div class="time-working">
+            <mat-icon mat-list-icon>event_available</mat-icon>
+            <div class="time">
+              <div mat-line>Время работы:</div>
+              <span mat-line>9.00 - 18.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-navigation-header></app-navigation-header>
+</header>

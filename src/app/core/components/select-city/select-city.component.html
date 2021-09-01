@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Выберите ваш город</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Город</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let city of cityes" [value]="city.name" (click)="onSelect(city.name)">
+        {{ city.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close>Close</button>
+</div>
