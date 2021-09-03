@@ -1,5 +1,5 @@
 <div class="container">
     <div class="header-catygories">
-        <button mat-button *ngFor="let category of catygories">{{category.name}}</button>
+        <button mat-button *ngFor="let category of catygories$ | async">{{category.name}}</button>
     </div>
 </div>

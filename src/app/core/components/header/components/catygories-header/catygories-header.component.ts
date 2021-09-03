@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { selectCategoriesNames } from 'src/app/redux/selectors/caregories.selectors';
 
 export interface ICategory {
   id: string;
@@ -11,7 +13,9 @@ export interface ICategory {
   styleUrls: ['./catygories-header.component.scss'],
 })
 export class CatygoriesHeaderComponent {
-  public catygories: Array<ICategory> = [
+  constructor(private store: Store) {}
+  
+  public catygories$ = this.store.pipe(select(selectCategoriesNames)); /*: Array<ICategory> = [
     {
       id: 'appliances',
       name: 'Бытовая техника',
@@ -32,5 +36,5 @@ export class CatygoriesHeaderComponent {
       id: 'hobbies',
       name: 'Досуг и хобби',
     },
-  ];
+  ];*/
 }

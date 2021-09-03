@@ -9,6 +9,11 @@ import { StoreModule } from '@ngrx/store';
 import { settingsReducer } from './redux/reducers/settings.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ShopInterceptor } from './shop/utils/shop.interceptor';
+import { categoriesReducer } from './redux/reducers/categories.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CategoriesEffects } from './redux/effects/categories.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,14 +22,22 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     CoreModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ settings: settingsReducer }),
+    StoreModule.forRoot({ settings: settingsReducer, categories: categoriesReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
       logOnly: environment.production,
       autoPause: true,
     }),
+    EffectsModule.forRoot([CategoriesEffects]),
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: ShopInterceptor,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
