@@ -1,0 +1,14 @@
+.navigation {
+    padding: 5px 0px 0px 0px;
+    width: 100%;
+    &-block {
+        display: flex;
+        align-items: center;
+        height: 55px;
+        width: 100%;
+    }
+}
+
+.input {
+    flex-grow: 1;
+}

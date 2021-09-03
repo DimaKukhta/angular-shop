@@ -1,0 +1,10 @@
+<div class="contacts">
+    <div class="contact">
+        <img src="../../../../../../assets/a1.png" alt="A1">
+        <span class="margin-left">+375 29 302 10 20</span>
+    </div>
+    <div class="contact" *ngFor="let contact of contacts">
+        <mat-icon>{{contact.iconName}}</mat-icon>
+        <span class="margin-left">{{contact.name}}</span>
+    </div>
+</div>

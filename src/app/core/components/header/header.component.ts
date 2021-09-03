@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectCountry } from 'src/app/redux/selectors/settings.selectors';
-import { SelectCityComponent } from '../select-city/select-city.component';
+import { SelectCityComponent } from './components/select-city/select-city.component';
 
 @Component({
   selector: 'app-header',

@@ -11,13 +11,21 @@ a {
 }
 
 .container {
-    margin: auto 20px;
+    margin: auto;
+    width: 1200px;
 }
 
 .hover:hover {
     cursor: pointer;
 }
 
+.margin-right {
+    margin: 0px 10px 0px 0px;
+}
+
+.margin-left {
+    margin: 0px 0px 0px 3px;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
