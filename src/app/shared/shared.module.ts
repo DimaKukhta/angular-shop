@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -31,6 +32,7 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
+    NgbRatingModule,
   ],
 })
 export class SharedModule { }

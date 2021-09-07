@@ -5,6 +5,8 @@ import { CategoriesPageComponent } from './pages/catigories-page/categories-page
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriesMenuComponent } from './components/categories-menu/categories-menu.component';
 import { SharedModule } from '../shared/shared.module';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { GoodsItemComponent } from './components/goods-item/goods-item.component';
 
 
 
@@ -13,6 +15,8 @@ import { SharedModule } from '../shared/shared.module';
     MainPageComponent,
     CategoriesPageComponent,
     CategoriesMenuComponent,
+    CategoryPageComponent,
+    GoodsItemComponent,
   ],
   imports: [
     CommonModule,
