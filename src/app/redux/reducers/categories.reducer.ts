@@ -3,6 +3,7 @@ import * as CategoriesActions from '../actions/catigories.actions';
 import { ICategoriesState } from '../models/categories.model';
 
 export const initialState: ICategoriesState = {
+  currentCategory: 'Бытовая техника',
   categories: [
     {
       id: 'appliances',
@@ -36,6 +37,7 @@ const reducer = createReducer(
   initialState,
   on(CategoriesActions.loadCategories, (state) => state),
   on(CategoriesActions.loadCategoriesSuccess, (state, { categories }) => ({ ...state, categories })),
+  on(CategoriesActions.setCurrentCategory, (state, { category }) => ({ ...state, currentCategory: category })),
 );
 
 export function categoriesReducer(

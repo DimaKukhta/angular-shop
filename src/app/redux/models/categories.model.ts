@@ -6,6 +6,7 @@ export interface ICategoryResponse {
 
 export interface ICategoriesState {
   categories: Array<ICategoryResponse>;
+  currentCategory: string,
 }
 
 export interface ISubCategory{

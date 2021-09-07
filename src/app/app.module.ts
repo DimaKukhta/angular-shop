@@ -14,6 +14,7 @@ import { ShopInterceptor } from './shop/utils/shop.interceptor';
 import { categoriesReducer } from './redux/reducers/categories.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CategoriesEffects } from './redux/effects/categories.effects';
+import { ShopModule } from './shop/shop.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { CategoriesEffects } from './redux/effects/categories.effects';
     }),
     EffectsModule.forRoot([CategoriesEffects]),
     HttpClientModule,
+    ShopModule,
   ],
   providers: [
     {

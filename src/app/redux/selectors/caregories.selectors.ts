@@ -15,3 +15,14 @@ export const selectCategoriesNames = createSelector(
       return { id, name };
     }),
 );
+
+export const selectCurrentCategory = createSelector(
+  selectCategoriesState,
+  (state: any) => state.currentCategory,
+);
+
+export const selectSubCategories = createSelector(
+  selectAllCaregories,
+  selectCurrentCategory,
+  (categories: any, currentCategory: any) => categories.find((element: any) => element.name === currentCategory).subCategories,
+);

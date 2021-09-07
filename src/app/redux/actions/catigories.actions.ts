@@ -7,3 +7,5 @@ export const loadCategoriesSuccess = createAction(
   '[Categories] Load categories success',
   props<{ categories: Array<ICategoryResponse> }>(),
 );
+
+export const setCurrentCategory = createAction('[Categories] Set current category', props<{ category: string }>());

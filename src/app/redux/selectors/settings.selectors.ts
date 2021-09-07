@@ -1,5 +1,4 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ISettingsState } from '../models/settings.models';
 
 const selectSettingsState = createFeatureSelector('settings');
 
