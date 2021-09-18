@@ -17,4 +17,8 @@ export class ShopService {
   public getGoods(categoryId: string, subCategoryId: string): Observable<any> {
     return this.http.get(`goods/category/${categoryId}/${subCategoryId}`);
   }
+
+  public getGoodsItem(goodsItemId: string): Observable<any> {
+    return this.http.get(`goods/item/${goodsItemId}`);
+  }
 }

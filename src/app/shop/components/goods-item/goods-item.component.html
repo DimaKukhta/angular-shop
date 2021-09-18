@@ -2,7 +2,7 @@
   <div class="picture flex">
     <img [src]="goodsItem.imageUrls[0]" alt="" />
   </div>
-  <div class="name flex">
+  <div class="name flex" (click)="onClickGoodsItem(goodsItem.id)">
     <h3>{{ goodsItem.name }}</h3>
   </div>
   <div class="status flex" *ngIf="goodsItem.availableAmount">

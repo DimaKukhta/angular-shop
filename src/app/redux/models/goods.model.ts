@@ -12,4 +12,5 @@ export interface IGoodsItem {
 
 export interface IGoodsState {
   goods: Array<IGoodsItem>;
+  currentGoodsItem: IGoodsItem | {},
 }

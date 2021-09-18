@@ -19,7 +19,7 @@ const routes: Routes = [
     component: CategoryPageComponent,
   },
   {
-    path: 'goods-item/:id',
+    path: 'category/:categoryId/:subCategoryId/:goodsItemId',
     component: GoodsItemPageComponent,
   },
 ];

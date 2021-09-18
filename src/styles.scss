@@ -28,11 +28,14 @@ a {
 }
 
 .flex-container {
-    min-height: calc(100vh - 290px);
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.app-container {
+    min-height: calc(100vh - 290px);
 }
 
 html, body { height: 100%; }

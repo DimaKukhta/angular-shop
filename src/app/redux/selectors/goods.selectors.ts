@@ -6,3 +6,8 @@ export const selectAllGoods = createSelector(
   selectGoodsState,
   (state: any) => state.goods,
 );
+
+export const selectCurrentGoodsItem = createSelector(
+  selectGoodsState,
+  (state: any) => state.currentGoodsItem,
+);

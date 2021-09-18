@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { loadGoods } from 'src/app/redux/actions/goods.actions';
+import { selectAllGoods } from 'src/app/redux/selectors/goods.selectors';
 import { ShopService } from '../../services/shop.service';
 
 @Component({
@@ -10,21 +13,29 @@ import { ShopService } from '../../services/shop.service';
   styleUrls: ['./category-page.component.scss'],
 })
 export class CategoryPageComponent implements OnInit {
-  constructor(public route: ActivatedRoute, private shop: ShopService) {}
+  constructor(
+    public route: ActivatedRoute,
+    private shop: ShopService,
+    private store: Store,
+  ) {}
 
   private params!: any;
 
-  public goods$!: Observable<any>;
+  public goods$: Observable<any> = this.store.select(selectAllGoods);
 
   ngOnInit(): void {
     this.route.params
       .pipe(
         tap((params) => {
           this.params = params;
-        })
+        }),
       )
       .subscribe();
-
-    this.goods$ = this.shop.getGoods(this.params.categoryId, this.params.subCategoryId);
+    this.store.dispatch(
+      loadGoods({
+        categoryId: this.params.categoryId,
+        subCategoryId: this.params.subCategoryId,
+      }),
+    );
   }
 }
