@@ -1,1 +1,7 @@
-<app-goods-item></app-goods-item>
+<div class="container">
+    <div class="flex-container">
+        <div class="category-page">
+            <app-goods-item *ngFor="let goodsItem of (goods$ | async)" [goodsItem]="goodsItem"></app-goods-item>
+        </div>
+    </div>
+</div>

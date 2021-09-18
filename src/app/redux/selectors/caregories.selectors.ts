@@ -24,5 +24,5 @@ export const selectCurrentCategory = createSelector(
 export const selectSubCategories = createSelector(
   selectAllCaregories,
   selectCurrentCategory,
-  (categories: any, currentCategory: any) => categories.find((element: any) => element.name === currentCategory).subCategories,
+  (categories: any, currentCategory: any) => categories.find((element: any) => element.name === currentCategory.name).subCategories,
 );

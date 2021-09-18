@@ -3,14 +3,14 @@
     <button
       mat-button
       *ngFor="let category of categories$ | async"
-      (mouseenter)="onFocus(category.name)"
-      [disabled]="category.name === (currentCategory$ | async)"
+      (mouseenter)="onFocus(category)"
+      [disabled]="category.name === currentCategory.name"
     >
       {{ category.name }}
     </button>
   </div>
   <div class="menu-subcategories">
-    <h2>{{ currentCategory$ | async }}</h2>
+    <h2>{{ currentCategory.name }}</h2>
     <div class="subcategories">
       <button mat-button *ngFor="let subCategory of subCategories$ | async"
       (click)="goToCategory(subCategory.id)">

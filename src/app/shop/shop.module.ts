@@ -7,6 +7,7 @@ import { CategoriesMenuComponent } from './components/categories-menu/categories
 import { SharedModule } from '../shared/shared.module';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { GoodsItemComponent } from './components/goods-item/goods-item.component';
+import { GoodsItemPageComponent } from './pages/goods-item-page/goods-item-page.component';
 
 
 
@@ -17,6 +18,7 @@ import { GoodsItemComponent } from './components/goods-item/goods-item.component
     CategoriesMenuComponent,
     CategoryPageComponent,
     GoodsItemComponent,
+    GoodsItemPageComponent,
   ],
   imports: [
     CommonModule,

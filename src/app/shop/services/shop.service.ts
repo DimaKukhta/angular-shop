@@ -13,4 +13,8 @@ export class ShopService {
   public getCategories(): Observable<any> {
     return this.http.get<ICategoryResponse>('categories');
   }
+
+  public getGoods(categoryId: string, subCategoryId: string): Observable<any> {
+    return this.http.get(`goods/category/${categoryId}/${subCategoryId}`);
+  }
 }

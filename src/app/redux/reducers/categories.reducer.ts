@@ -3,7 +3,11 @@ import * as CategoriesActions from '../actions/catigories.actions';
 import { ICategoriesState } from '../models/categories.model';
 
 export const initialState: ICategoriesState = {
-  currentCategory: 'Бытовая техника',
+  currentCategory: {
+    id: 'appliances',
+    name: 'Бытовая техника',
+    subCategories: [],
+  },
   categories: [
     {
       id: 'appliances',

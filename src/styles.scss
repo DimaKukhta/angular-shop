@@ -28,10 +28,11 @@ a {
 }
 
 .flex-container {
-    height: calc(100vh - 290px);
+    min-height: calc(100vh - 290px);
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 html, body { height: 100%; }
