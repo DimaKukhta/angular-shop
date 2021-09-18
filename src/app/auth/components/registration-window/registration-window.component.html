@@ -1,0 +1,34 @@
+<form class="login-window">
+  <h2>Авторизация</h2>
+  <mat-form-field appearance="fill">
+    <mat-label>Имя</mat-label>
+    <input matInput placeholder="Имя" [(ngModel)]="firstName" name="имя" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Фамилия</mat-label>
+    <input
+      matInput
+      placeholder="Фамилия"
+      [(ngModel)]="lastName"
+      name="фамилия"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Логин</mat-label>
+    <input matInput placeholder="Логин" [(ngModel)]="login" name="логин" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Пароль</mat-label>
+    <input
+      matInput
+      placeholder="Пароль"
+      [(ngModel)]="password"
+      name="пароль"
+      type="password"
+    />
+  </mat-form-field>
+  <div class="buttons-control">
+    <button mat-button color="primary" (click)="goToLoginPage()">Войти</button>
+    <button mat-raised-button (click)="onRegistration()">Регистрация</button>
+  </div>
+</form>

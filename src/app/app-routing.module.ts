@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'category/:categoryId/:subCategoryId/:goodsItemId',
     component: GoodsItemPageComponent,
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((message) => message.AuthModule),
+  },
 ];
 
 @NgModule({

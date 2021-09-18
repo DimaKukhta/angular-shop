@@ -1,0 +1,15 @@
+<form class="login-window">
+    <h2>Авторизация</h2>
+    <mat-form-field appearance="fill">
+        <mat-label>Логин</mat-label>
+        <input matInput placeholder="Логин" [(ngModel)]="login" name="login">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Пароль</mat-label>
+        <input matInput placeholder="Пароль" [(ngModel)]="password" name="пароль" type="password">
+      </mat-form-field>
+      <div class="buttons-control">
+        <button mat-button color="primary" (click)="onRegistrationPage()">Реистрация</button>
+        <button mat-raised-button (click)="onLogin()">Войти</button>
+      </div>
+</form>

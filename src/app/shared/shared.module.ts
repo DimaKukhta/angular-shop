@@ -10,16 +10,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
-
-
-
+import { NgbCarouselModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
+  declarations: [
   ],
+  imports: [CommonModule],
   exports: [
     MatButtonModule,
     MatIconModule,
@@ -33,6 +32,10 @@ import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     MatInputModule,
     NgbRatingModule,
+    NgbCarouselModule,
+    MatTabsModule,
+    MatMenuModule,
+    MatSnackBarModule,
   ],
 })
-export class SharedModule { }
+export class SharedModule {}

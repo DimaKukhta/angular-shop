@@ -17,6 +17,7 @@ import { CategoriesEffects } from './redux/effects/categories.effects';
 import { ShopModule } from './shop/shop.module';
 import { GoodsEffects } from './redux/effects/goods.effects';
 import { goodsReducer } from './redux/reducers/goods.reducer';
+import { authReducer } from './redux/reducers/auth.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,9 +26,14 @@ import { goodsReducer } from './redux/reducers/goods.reducer';
     AppRoutingModule,
     CoreModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ settings: settingsReducer, categories: categoriesReducer, goods: goodsReducer }),
+    StoreModule.forRoot({
+      settings: settingsReducer,
+      categories: categoriesReducer,
+      goods: goodsReducer,
+      auth: authReducer,
+    }),
     StoreDevtoolsModule.instrument({
-      maxAge: 25, 
+      maxAge: 25,
       logOnly: environment.production,
       autoPause: true,
     }),

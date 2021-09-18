@@ -1,4 +1,21 @@
-<button mat-stroked-button>
-    <mat-icon>account_circle</mat-icon>
-    <span class="margin-left">Аккаунт</span>
+<button mat-stroked-button [matMenuTriggerFor]="menu">
+  <mat-icon>account_circle</mat-icon>
+  <span class="margin-left">Аккаунт</span>
+  <mat-menu #menu="matMenu">
+    <div class="account-menu">
+      <mat-icon>account_circle</mat-icon>
+      <button mat-raised-button (click)="goAuthPage()">Войти</button>
+      <div class="cart flex">
+        <button mat-button>
+          <mat-icon>local_grocery_store</mat-icon><span>Корзина</span>
+        </button>
+      </div>
+      <div class="favorite flex">
+        <button mat-button>
+          <mat-icon>favorite_border</mat-icon>
+          <span>Избранные</span>
+        </button>
+      </div>
+    </div>
+  </mat-menu>
 </button>
