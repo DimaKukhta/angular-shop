@@ -19,8 +19,8 @@ export class ShopService {
     return this.http.get<ICategoryResponse>('categories');
   }
 
-  public getGoods(categoryId: string, subCategoryId: string): Observable<any> {
-    return this.http.get(`goods/category/${categoryId}/${subCategoryId}`);
+  public getGoods(categoryId: string, subCategoryId: string, startPosition: number): Observable<any> {
+    return this.http.get(`goods/category/${categoryId}/${subCategoryId}?start=${startPosition}&count=10`);
   }
 
   public getGoodsItem(goodsItemId: string): Observable<any> {

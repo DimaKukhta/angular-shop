@@ -1,7 +1,18 @@
 <div class="container">
-    <div class="flex-container">
-        <div class="category-page">
-            <app-goods-item *ngFor="let goodsItem of (goods$ | async)" [goodsItem]="goodsItem"></app-goods-item>
-        </div>
+  <div class="flex-container">
+    <button
+      mat-raised-button
+      [disabled]="startPosition === 0"
+      (click)="loadPreviosGoods()"
+    >
+      Предыдущие
+    </button>
+    <div class="category-page">
+      <app-goods-item
+        *ngFor="let goodsItem of goods$ | async"
+        [goodsItem]="goodsItem"
+      ></app-goods-item>
     </div>
+    <button mat-raised-button (click)="loadNextGoods()">Следующие</button>
+  </div>
 </div>

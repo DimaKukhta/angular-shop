@@ -1,4 +1,5 @@
 <div class="container" *ngIf="goodsItem$ | async as goodsItem">
+  <img class="discount" src="../../../../assets/star.png" *ngIf="goodsItem.rating === 5">
   <div class="sliderAndDescriptions">
     <ngb-carousel class="slider">
       <ng-template ngbSlide *ngFor="let image of goodsItem.imageUrls">

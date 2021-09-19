@@ -18,6 +18,7 @@ import { ShopModule } from './shop/shop.module';
 import { GoodsEffects } from './redux/effects/goods.effects';
 import { goodsReducer } from './redux/reducers/goods.reducer';
 import { authReducer } from './redux/reducers/auth.reducer';
+import { userReducer } from './redux/reducers/user.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { authReducer } from './redux/reducers/auth.reducer';
       categories: categoriesReducer,
       goods: goodsReducer,
       auth: authReducer,
+      user: userReducer,
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

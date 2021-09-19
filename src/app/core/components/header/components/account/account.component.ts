@@ -12,5 +12,5 @@ export class AccountComponent {
 
   public goAuthPage = () => {
     this.router.navigate(['auth', 'login']);
-  }
+  };
 }

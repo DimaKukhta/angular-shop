@@ -1,0 +1,16 @@
+<div class="container" *ngIf="cartItems.length; else noItems">
+  <app-cart-item
+    *ngFor="let cartItem of cartItems"
+    [cartItem]="cartItem"
+    [incrementCount]="incrementCount"
+    [dicrementCount]="dicrementCount"
+  ></app-cart-item>
+  <div class="control">
+    <div class="price">Общая стоимость: {{ getPrice() }}р.</div>
+    <button mat-raised-button>Оплатить</button>
+  </div>
+</div>
+
+<ng-template #noItems>
+  <div class="container free">Корзина пуста</div>
+</ng-template>

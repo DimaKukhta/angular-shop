@@ -23,6 +23,30 @@ export class CategoryPageComponent implements OnInit {
 
   public goods$: Observable<any> = this.store.select(selectAllGoods);
 
+  public startPosition = 0;
+
+  public loadPreviosGoods(): void {
+    this.startPosition -= 10;
+    this.store.dispatch(
+      loadGoods({
+        categoryId: this.params.categoryId,
+        subCategoryId: this.params.subCategoryId,
+        startPosition: this.startPosition,
+      }),
+    );
+  }
+
+  public loadNextGoods(): void {
+    this.startPosition += 10;
+    this.store.dispatch(
+      loadGoods({
+        categoryId: this.params.categoryId,
+        subCategoryId: this.params.subCategoryId,
+        startPosition: this.startPosition,
+      }),
+    );
+  }
+
   ngOnInit(): void {
     this.route.params
       .pipe(
@@ -35,6 +59,7 @@ export class CategoryPageComponent implements OnInit {
       loadGoods({
         categoryId: this.params.categoryId,
         subCategoryId: this.params.subCategoryId,
+        startPosition: this.startPosition,
       }),
     );
   }

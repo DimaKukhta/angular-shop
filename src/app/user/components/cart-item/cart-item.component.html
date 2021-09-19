@@ -1,0 +1,15 @@
+<div class="cart-item">
+  <img [src]="cartItem.imageUrls[0]" alt="" />
+  <div class="name-and-amount">
+    <div class="name">{{ cartItem.name }}</div>
+    <div class="amount">
+        <button mat-button (click)="dicrementCount(cartItem.id)" [disabled]="cartItem.amount === 1">-</button>
+        <span> {{ cartItem.amount }} </span>
+        <button mat-button (click)="incrementCount(cartItem.id)">+</button>
+    </div>
+  </div>
+  <div class="control">
+    <div class="price">{{ cartItem.price }}р</div>
+    <button (click)="onDelete(cartItem.id)">Удалить</button>
+  </div>
+</div>
