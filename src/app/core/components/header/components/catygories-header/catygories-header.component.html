@@ -1,5 +1,11 @@
 <div class="container">
-    <div class="header-catygories">
-        <button mat-button *ngFor="let category of catygories$ | async">{{category.name}}</button>
-    </div>
+  <div class="header-catygories">
+    <button
+      mat-button
+      *ngFor="let category of catygories$ | async"
+      (click)="onCategoriesPage(category)"
+    >
+      {{ category.name }}
+    </button>
+  </div>
 </div>

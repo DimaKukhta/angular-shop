@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { loadGoodsItem } from 'src/app/redux/actions/goods.actions';
 import { selectCurrentGoodsItem } from 'src/app/redux/selectors/goods.selectors';
+import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
   selector: 'app-goods-item-page',
@@ -13,7 +14,12 @@ import { selectCurrentGoodsItem } from 'src/app/redux/selectors/goods.selectors'
   styleUrls: ['./goods-item-page.component.scss'],
 })
 export class GoodsItemPageComponent implements OnInit {
-  constructor(private store: Store, public route: ActivatedRoute, config: NgbRatingConfig) {
+  constructor(
+    private store: Store,
+    public route: ActivatedRoute,
+    config: NgbRatingConfig,
+    private userService: UserService,
+  ) {
     config.max = 5;
     config.readonly = true;
   }
@@ -37,5 +43,21 @@ export class GoodsItemPageComponent implements OnInit {
         goodsItemId: this.params.goodsItemId,
       }),
     );
+  }
+
+  public addToCard(id: string): void {
+    this.userService.addGoodsItemtoCart(id);
+  }
+
+  public addToFavorites(id: string): void {
+    this.userService.addGoodsItemtoFavorites(id);
+  }
+
+  public isInCart(id: string): boolean {
+    return this.userService.isInCart(id);
+  }
+
+  public isInFavorite(id: string): boolean {
+    return this.userService.isInFavorite(id);
   }
 }

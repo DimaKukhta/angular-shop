@@ -16,7 +16,7 @@ export class CartPageComponent implements OnInit {
   constructor(
     private userService: UserService,
     private store: Store,
-    private shopService: ShopService
+    private shopService: ShopService,
   ) {}
 
   public cartItems$: Observable<any> = this.store.select(selectUserCart);
@@ -31,7 +31,7 @@ export class CartPageComponent implements OnInit {
           console.log(array);
         }),
         map((array) =>
-          array.map((element: string) => this.shopService.getGoodsItem(element))
+          array.map((element: string) => this.shopService.getGoodsItem(element)),
         ),
         tap((array) => {
           console.log(array);
@@ -41,7 +41,7 @@ export class CartPageComponent implements OnInit {
         }),
         catchError((err) => {
           throw new Error(err);
-        })
+        }),
       )
       .subscribe((result) => {
         this.cartItems = result.map((element: any) => {
@@ -57,23 +57,5 @@ export class CartPageComponent implements OnInit {
       }, 0);
     }
     return 0;
-  }
-
-  public incrementCount(id: string): void {
-    this.cartItems.forEach((element: any) => {
-      if (element.id === id) {
-        element.amount += 1;
-      }
-    });
-  }
-
-  public dicrementCount(id: string): void {
-    this.cartItems = [
-      ...this.cartItems.forEach((element: any) => {
-        if (element.id === id) {
-          element.amount -= 1;
-        }
-      }),
-    ];
   }
 }

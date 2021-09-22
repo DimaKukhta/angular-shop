@@ -6,12 +6,12 @@
       <mat-icon>account_circle</mat-icon>
       <button mat-raised-button (click)="goAuthPage()">Войти</button>
       <div class="cart flex">
-        <button mat-button>
+        <button mat-button (click)="goToCart()">
           <mat-icon>local_grocery_store</mat-icon><span>Корзина</span>
         </button>
       </div>
       <div class="favorite flex">
-        <button mat-button>
+        <button mat-button (click)="goToFavorite()">
           <mat-icon>favorite_border</mat-icon>
           <span>Избранные</span>
         </button>

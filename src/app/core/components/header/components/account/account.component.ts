@@ -13,4 +13,12 @@ export class AccountComponent {
   public goAuthPage = () => {
     this.router.navigate(['auth', 'login']);
   };
+
+  public goToCart = () => {
+    this.router.navigate(['user', 'cart']);
+  };
+
+  public goToFavorite = () => {
+    this.router.navigate(['user', 'favorite']);
+  };
 }

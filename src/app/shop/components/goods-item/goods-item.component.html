@@ -18,9 +18,9 @@
     <ngb-rating [rate]="goodsItem.rating"></ngb-rating>
   </div>
   <div class="basket-button flex">
-    <button mat-raised-button color="accent" (click)="addToCard(goodsItem.id)">В корзину</button>
+    <button mat-raised-button color="accent" (click)="addToCard(goodsItem.id)" [disabled]="disabledCart">В корзину</button>
   </div>
   <div class="favorites flex">
-    <button mat-button color="primary" (click)="addToFavorites(goodsItem.id)">В избранное</button>
+    <button mat-button color="primary" (click)="addToFavorites(goodsItem.id)" [disabled]="disabledFavorite">В избранное</button>
   </div>
 </div>

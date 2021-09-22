@@ -2,8 +2,6 @@
   <app-cart-item
     *ngFor="let cartItem of cartItems"
     [cartItem]="cartItem"
-    [incrementCount]="incrementCount"
-    [dicrementCount]="dicrementCount"
   ></app-cart-item>
   <div class="control">
     <div class="price">Общая стоимость: {{ getPrice() }}р.</div>

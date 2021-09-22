@@ -7,11 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./logo.component.scss'],
 })
 export class LogoComponent {
-
-  constructor(public router: Router) { }
+  constructor(public router: Router) {}
 
   public goHome(): void {
     this.router.navigate(['']);
   }
-
 }

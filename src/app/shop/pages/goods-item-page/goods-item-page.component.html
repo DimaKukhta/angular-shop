@@ -1,5 +1,9 @@
 <div class="container" *ngIf="goodsItem$ | async as goodsItem">
-  <img class="discount" src="../../../../assets/star.png" *ngIf="goodsItem.rating === 5">
+  <img
+    class="discount"
+    src="../../../../assets/star.png"
+    *ngIf="goodsItem.rating === 5"
+  />
   <div class="sliderAndDescriptions">
     <ngb-carousel class="slider">
       <ng-template ngbSlide *ngFor="let image of goodsItem.imageUrls">
@@ -27,10 +31,24 @@
         <ngb-rating [rate]="goodsItem.rating"></ngb-rating>
       </div>
       <div class="basket-button flex">
-        <button mat-raised-button color="accent">В корзину</button>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="addToCard(goodsItem.id)"
+          [disabled]="isInCart(goodsItem.id)"
+        >
+          В корзину
+        </button>
       </div>
       <div class="favorites flex">
-        <button mat-button color="primary">В избранное</button>
+        <button
+          mat-button
+          color="primary"
+          (click)="addToFavorites(goodsItem.id)"
+          [disabled]="isInFavorite(goodsItem.id)"
+        >
+          В избранное
+        </button>
       </div>
     </div>
   </div>

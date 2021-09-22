@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { GoodsItemComponent } from './components/goods-item/goods-item.component';
 import { GoodsItemPageComponent } from './pages/goods-item-page/goods-item-page.component';
+import { SortPipe } from './utils/sort.pipe';
 
 
 
@@ -19,6 +20,7 @@ import { GoodsItemPageComponent } from './pages/goods-item-page/goods-item-page.
     CategoryPageComponent,
     GoodsItemComponent,
     GoodsItemPageComponent,
+    SortPipe,
   ],
   imports: [
     CommonModule,

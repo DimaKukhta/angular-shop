@@ -1,17 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss']
+  styleUrls: ['./category.component.scss'],
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent {
 
   constructor(public router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   public goToCategoriesPage(): void {
     this.router.navigate(['categories']);

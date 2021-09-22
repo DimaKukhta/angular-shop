@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { loadGoods } from 'src/app/redux/actions/goods.actions';
 import { selectAllGoods } from 'src/app/redux/selectors/goods.selectors';
-import { ShopService } from '../../services/shop.service';
+import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
   selector: 'app-category-page',
@@ -15,8 +15,8 @@ import { ShopService } from '../../services/shop.service';
 export class CategoryPageComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
-    private shop: ShopService,
     private store: Store,
+    private userService: UserService,
   ) {}
 
   private params!: any;
@@ -24,6 +24,8 @@ export class CategoryPageComponent implements OnInit {
   public goods$: Observable<any> = this.store.select(selectAllGoods);
 
   public startPosition = 0;
+
+  public currentTypeSort = 'rating';
 
   public loadPreviosGoods(): void {
     this.startPosition -= 10;
@@ -62,5 +64,17 @@ export class CategoryPageComponent implements OnInit {
         startPosition: this.startPosition,
       }),
     );
+  }
+
+  public isInCart(id: string) {
+    return this.userService.isInCart(id);
+  }
+
+  public isInFavorite(id: string) {
+    return this.userService.isInFavorite(id);
+  }
+
+  public setSortType(type: string): void {
+    this.currentTypeSort = type;
   }
 }

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavigationHeaderComponent } from './navigation-header.component';
+import { FavoriteItemComponent } from './favorite-item.component';
 
-describe('NavigationHeaderComponent', () => {
-  let component: NavigationHeaderComponent;
-  let fixture: ComponentFixture<NavigationHeaderComponent>;
+describe('FavoriteItemComponent', () => {
+  let component: FavoriteItemComponent;
+  let fixture: ComponentFixture<FavoriteItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NavigationHeaderComponent],
+      declarations: [FavoriteItemComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavigationHeaderComponent);
+    fixture = TestBed.createComponent(FavoriteItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { selectCategoriesNames } from 'src/app/redux/selectors/caregories.selectors';
+import { setCurrentCategory } from 'src/app/redux/actions/catigories.actions';
+import {
+  selectAllCaregories,
+  selectCategoriesNames,
+} from 'src/app/redux/selectors/caregories.selectors';
 
 export interface ICategory {
   id: string;
@@ -13,28 +18,14 @@ export interface ICategory {
   styleUrls: ['./catygories-header.component.scss'],
 })
 export class CatygoriesHeaderComponent {
-  constructor(private store: Store) {}
-  
-  public catygories$ = this.store.pipe(select(selectCategoriesNames)); /*: Array<ICategory> = [
-    {
-      id: 'appliances',
-      name: 'Бытовая техника',
-    },
-    {
-      id: 'electronics',
-      name: 'Электроника',
-    },
-    {
-      id: 'computers-peripherals',
-      name: 'Компьютеры и периферия',
-    },
-    {
-      id: 'furniture',
-      name: 'Мебель',
-    },
-    {
-      id: 'hobbies',
-      name: 'Досуг и хобби',
-    },
-  ];*/
+  constructor(private store: Store, public router: Router) {}
+
+  public catygories$ = this.store.pipe(select(selectCategoriesNames));
+
+  public categories$ = this.store.select(selectAllCaregories);
+
+  public onCategoriesPage(category: any): void {
+    this.store.dispatch(setCurrentCategory({ category }));
+    this.router.navigate(['categories']);
+  }
 }

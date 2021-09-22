@@ -10,10 +10,6 @@ export class CartItemComponent implements OnInit {
 
   @Input() cartItem!: any;
 
-  @Input() incrementCount!: any;
-
-  @Input() dicrementCount!: any;
-
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {

@@ -3,9 +3,9 @@
   <div class="name-and-amount">
     <div class="name">{{ cartItem.name }}</div>
     <div class="amount">
-        <button mat-button (click)="dicrementCount(cartItem.id)" [disabled]="cartItem.amount === 1">-</button>
+        <button mat-button [disabled]="cartItem.amount === 1">-</button>
         <span> {{ cartItem.amount }} </span>
-        <button mat-button (click)="incrementCount(cartItem.id)">+</button>
+        <button mat-button>+</button>
     </div>
   </div>
   <div class="control">

@@ -1,18 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-window',
   templateUrl: './login-window.component.html',
-  styleUrls: ['./login-window.component.scss']
+  styleUrls: ['./login-window.component.scss'],
 })
-export class LoginWindowComponent implements OnInit {
-
-  constructor(private auth: AuthService, public router: Router) { }
-
-  ngOnInit(): void {
-  }
+export class LoginWindowComponent {
+  constructor(private auth: AuthService, public router: Router) {}
 
   public login = '';
 
@@ -26,5 +22,4 @@ export class LoginWindowComponent implements OnInit {
   public onRegistrationPage(): void {
     this.router.navigate(['auth', 'registration']);
   }
-
 }
