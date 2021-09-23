@@ -1,0 +1,21 @@
+.free {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    height: 100%;
+}
+
+.control {
+    padding: 10px;
+    width: 300px;
+    height: 85px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    button {
+        width: 150px;
+    }
+}

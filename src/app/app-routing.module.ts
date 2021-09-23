@@ -1,7 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CategoryPageComponent } from './shop/pages/category-page/category-page.component';
+import { CategoriesPageComponent } from './shop/pages/catigories-page/categories-page.component';
+import { GoodsItemPageComponent } from './shop/pages/goods-item-page/goods-item-page.component';
+import { MainPageComponent } from './shop/pages/main-page/main-page.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: MainPageComponent,
+  },
+  {
+    path: 'categories',
+    component: CategoriesPageComponent,
+  },
+  {
+    path: 'category/:categoryId/:subCategoryId',
+    component: CategoryPageComponent,
+  },
+  {
+    path: 'category/:categoryId/:subCategoryId/:goodsItemId',
+    component: GoodsItemPageComponent,
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((message) => message.AuthModule),
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then((message) => message.UserModule),
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

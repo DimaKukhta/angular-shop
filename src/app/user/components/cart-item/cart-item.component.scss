@@ -1,0 +1,31 @@
+.cart-item {
+  display: flex;
+  border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+  align-items: center;
+  height: 100px;
+  justify-content: space-between;
+  img {
+    max-width: 75px;
+    max-height: 75px;
+  }
+
+  .name {
+    color: blue;
+    text-decoration: underline;
+  }
+
+  .control button {
+    color: blue;
+    text-decoration: underline;
+    border: none;
+    outline: none;
+    background: none;
+  }
+
+  .name-and-amount {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
+}

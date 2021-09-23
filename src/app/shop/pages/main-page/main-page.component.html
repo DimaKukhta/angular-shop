@@ -1,0 +1,46 @@
+<div class="container">
+  <ngb-carousel *ngIf="discountGoods">
+    <ng-template ngbSlide *ngFor="let discountGoodsItem of discountGoods">
+      <div class="slider">
+        <div class="slider-image">
+          <img [src]="discountGoodsItem.imageUrls[0]" alt="Random slide" />
+        </div>
+        <div class="slider-text">
+          <h1>Супер цена!!! Распродажа смартофонов, успей купить!!!</h1>
+          <h2>{{ discountGoodsItem.name }}</h2>
+          <h3>{{ discountGoodsItem.price }} р.</h3>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+  <h2>Описание возможностей приложения:</h2>
+  <ul>
+    <li>У вас есть возможность создать собственный аккаунт</li>
+    <li>
+      Так же вы имеете свою собственную корзину, куда можете складывать покупки
+    </li>
+    <li>У вас есть вожность добовлять товары в избранное</li>
+    <li>
+      Для создания приложения использовались библиотеки: Angular Material,
+      ng-boorstap
+    </li>
+    <li>Использовались pipe's, interseptor's и многое другое.</li>
+    <li>Реализована пагинация на 10 элементов</li>
+    <li>Есть возможность сортировки товаров по цене / стоимости</li>
+    <li>
+      У элементов у который высокий рейтинг = 5, отображается звёздочка :)
+    </li>
+    <li>В приложении есть всё что надо :)</li>
+  </ul>
+  <div class="video">
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/YSyV3cQ1xnc"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>

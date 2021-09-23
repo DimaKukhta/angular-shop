@@ -1,1 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a {
+  color: black;
+}
+
+.breadcrumbs {
+  span {
+    color: blue;
+    text-decoration: underline;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.container {
+  margin: auto;
+  width: 1200px;
+  position: relative;
+}
+
+.hover:hover {
+  cursor: pointer;
+}
+
+.margin-right {
+  margin: 0px 10px 0px 0px;
+}
+
+.margin-left {
+  margin: 0px 0px 0px 3px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.app-container {
+  min-height: calc(100vh - 290px);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #D3CCE3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";

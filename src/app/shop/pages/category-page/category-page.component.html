@@ -1,0 +1,38 @@
+<div class="container" *ngIf="goods$ | async as goods">
+  <div class="breadcrumbs">
+    <span (click)="goToCategory()">{{ params.categoryId }}</span> /
+    <span>{{ params.subCategoryId }}</span>
+  </div>
+  <div class="sortControl">
+    <span>Sort by:</span>
+    <button mat-button (click)="setSortType('rating')">Rating</button>
+    <button mat-button (click)="setSortType('price')">Price</button>
+  </div>
+  <div class="flex-container">
+    <button
+      mat-raised-button
+      [disabled]="startPosition === 0"
+      (click)="loadPreviosGoods()"
+    >
+      Предыдущие
+    </button>
+    <div class="category-page">
+      <app-goods-item
+        *ngFor="
+          let goodsItem of goods.slice(startPosition, startPosition + 10)
+            | sort: currentTypeSort
+        "
+        [goodsItem]="goodsItem"
+        [disabledCart]="isInCart(goodsItem.id)"
+        [disabledFavorite]="isInFavorite(goodsItem.id)"
+      ></app-goods-item>
+    </div>
+    <button
+      mat-raised-button
+      (click)="loadNextGoods()"
+      [disabled]="goods.length < startPosition + 10"
+    >
+      Следующие
+    </button>
+  </div>
+</div>
