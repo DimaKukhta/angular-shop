@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { forkJoin } from 'rxjs';
+import { forkJoin, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { selectUserFavorite } from 'src/app/redux/selectors/user.selector';
 import { ShopService } from 'src/app/shop/services/shop.service';
@@ -29,8 +29,8 @@ export class FavoritePageComponent implements OnInit {
         mergeMap((array) => {
           return forkJoin(array);
         }),
-        catchError((err) => {
-          throw new Error(err);
+        catchError(() => {
+          return of([]);
         }),
       )
       .subscribe((result) => {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { IGoodsItem } from 'src/app/redux/models/goods.model';
 import { selectUserCart } from 'src/app/redux/selectors/user.selector';
@@ -33,8 +33,8 @@ export class CartPageComponent implements OnInit {
         mergeMap((array) => {
           return forkJoin(array);
         }),
-        catchError((err) => {
-          throw new Error(err);
+        catchError(() => {
+          return of([]);
         }),
       )
       .subscribe((result) => {

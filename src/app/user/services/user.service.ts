@@ -5,7 +5,10 @@ import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { setUserInfo } from 'src/app/redux/actions/user.actions';
-import { selectUserCart, selectUserFavorite } from 'src/app/redux/selectors/user.selector';
+import {
+  selectUserCart,
+  selectUserFavorite,
+} from 'src/app/redux/selectors/user.selector';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +34,6 @@ export class UserService {
         }),
       )
       .subscribe();
-
   }
 
   public cartItems$ = this.store.select(selectUserCart);
@@ -47,62 +49,67 @@ export class UserService {
   }
 
   public getUserInfo(): void {
+    try {
+      this.http
+        .get('users/userInfo')
+        .pipe(
+          tap((response: any) => {
+            if (response) {
+              this.store.dispatch(setUserInfo({ userInfo: response }));
+            }
+          }),
+          catchError(() => {
+            this.getWarning('Ошибка авторизации');
+            return of([]);
+          }),
+        )
+        .subscribe();
+    } catch (e) {}
+  }
+
+  public deleteFromCart(id: string): void {
     this.http
-      .get('users/userInfo')
+      .delete(`users/cart?id=${id}`)
       .pipe(
-        tap((response: any) => {
-          if (response) {
-            this.store.dispatch(setUserInfo({ userInfo: response }));
-          }
+        tap(() => {
+          this.getWarning('Товар успешно удалён');
+          this.getUserInfo();
         }),
-        catchError((err) => {
-          this.getWarning('Ошибка авторизации' + err);
+        catchError(() => {
+          this.getWarning('Ошибка!');
           return of([]);
         }),
       )
       .subscribe();
   }
 
-  public deleteFromCart(id: string): void {
-    this.http.delete(`users/cart?id=${id}`)
-      .pipe(
-        tap(() => {
-          this.getWarning('Товар успешно удалён');
-          this.getUserInfo();
-        }),
-        catchError((err) => {
-          this.getWarning('Ошибка!');
-          throw new Error(err);
-        }),
-      )
-      .subscribe();
-  }
-
   public addGoodsItemtoCart(itemId: string): void {
-    this.http.post('users/cart', { id: itemId })
+    this.http
+      .post('users/cart', { id: itemId })
       .pipe(
         tap(() => {
           this.getWarning('Товар добавлен в корзину!');
           this.getUserInfo();
         }),
-        catchError((err) => {
+        catchError(() => {
           this.getWarning('Ошибка!');
-          throw new Error(err);
+          return of([]);
         }),
       )
       .subscribe();
   }
 
   public addGoodsItemtoFavorites(itemId: string): void {
-    this.http.post('users/favorites', { id: itemId })
+    this.http
+      .post('users/favorites', { id: itemId })
       .pipe(
         tap(() => {
           this.getWarning('Товар добавлен в избранное!');
           this.getUserInfo();
         }),
-        catchError((err) => {
+        catchError(() => {
           this.getWarning('Ошибка!');
-          throw new Error(err);
+          return of([]);
         }),
       )
       .subscribe();
