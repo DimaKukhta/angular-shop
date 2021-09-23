@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectCurrentUser } from 'src/app/redux/selectors/user.selector';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { selectAuthToken } from 'src/app/redux/selectors/auth.selectors';
 
 @Component({
   selector: 'app-account',
@@ -10,9 +11,9 @@ import { selectCurrentUser } from 'src/app/redux/selectors/user.selector';
 })
 export class AccountComponent {
 
-  constructor(public router: Router, private store: Store) { }
+  constructor(public router: Router, private store: Store, private authService: AuthService) { }
 
-  public user$ = this.store.select(selectCurrentUser);
+  public token$ = this.store.select(selectAuthToken);
 
   public goAuthPage = () => {
     this.router.navigate(['auth', 'login']);
@@ -25,4 +26,8 @@ export class AccountComponent {
   public goToFavorite = () => {
     this.router.navigate(['user', 'favorite']);
   };
+
+  public onLogOut(): void {
+    this.authService.logout();
+  }
 }

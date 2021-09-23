@@ -78,21 +78,6 @@ export class UserService {
       .subscribe();
   }
 
-  public deleteFromFavorites(id: string): void {
-    this.http.delete(`users/favorites?id=${id}`)
-      .pipe(
-        tap(() => {
-          this.getWarning('Товар успешно удалён');
-          this.getUserInfo();
-        }),
-        catchError((err) => {
-          this.getWarning('Ошибка!');
-          throw new Error(err);
-        }),
-      )
-      .subscribe();
-  }
-
   public addGoodsItemtoCart(itemId: string): void {
     this.http.post('users/cart', { id: itemId })
       .pipe(

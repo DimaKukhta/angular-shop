@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/user/services/user.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,14 +9,13 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login-window.component.scss'],
 })
 export class LoginWindowComponent {
-  constructor(private auth: AuthService, public router: Router) {}
+  constructor(private auth: AuthService, public router: Router, private userService: UserService) {}
 
   public login = '';
 
   public password = '';
 
   public onLogin(): void {
-    console.log(this.login, this.password);
     this.auth.login(this.login, this.password);
   }
 

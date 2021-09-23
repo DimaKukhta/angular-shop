@@ -30,7 +30,6 @@ export class GoodsItemComponent implements OnInit {
   private params!: any;
 
   ngOnInit(): void {
-    console.log(this.disabledFavorite);
     this.route.params
       .pipe(
         tap((params) => {

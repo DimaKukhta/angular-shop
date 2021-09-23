@@ -4,11 +4,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { loadGoods } from 'src/app/redux/actions/goods.actions';
-import { ICategoryResponse } from 'src/app/redux/models/categories.model';
 import { selectAllCaregories } from 'src/app/redux/selectors/caregories.selectors';
 import { selectAllGoods } from 'src/app/redux/selectors/goods.selectors';
 import { UserService } from 'src/app/user/services/user.service';
-import { setCurrentCategory } from '../../../redux/actions/catigories.actions';
 
 @Component({
   selector: 'app-category-page',
@@ -20,7 +18,7 @@ export class CategoryPageComponent implements OnInit {
     public route: ActivatedRoute,
     private store: Store,
     private userService: UserService,
-    public router: Router
+    public router: Router,
   ) {}
 
   public params!: any;

@@ -5,3 +5,7 @@ export const setUserInfo = createAction(
   '[User] Set user info',
   props<{ userInfo: IUserInfo }>(),
 );
+
+export const deleteUserInfo = createAction(
+  '[User] Delete user info',
+);
