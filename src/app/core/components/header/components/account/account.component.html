@@ -1,10 +1,11 @@
-<button mat-stroked-button [matMenuTriggerFor]="menu">
+<button mat-stroked-button [matMenuTriggerFor]="menu"  *ngIf="(user$ | async) as user">
   <mat-icon>account_circle</mat-icon>
   <span class="margin-left">Аккаунт</span>
   <mat-menu #menu="matMenu">
     <div class="account-menu">
       <mat-icon>account_circle</mat-icon>
-      <button mat-raised-button (click)="goAuthPage()">Войти</button>
+      <button mat-raised-button (click)="goAuthPage()" *ngIf="!user.firstName">Войти</button>
+      <button mat-raised-button *ngIf="!!user.firstName">Выйти</button>
       <div class="cart flex">
         <button mat-button (click)="goToCart()">
           <mat-icon>local_grocery_store</mat-icon><span>Корзина</span>

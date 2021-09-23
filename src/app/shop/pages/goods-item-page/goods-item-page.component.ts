@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -19,12 +19,13 @@ export class GoodsItemPageComponent implements OnInit {
     public route: ActivatedRoute,
     config: NgbRatingConfig,
     private userService: UserService,
+    public router: Router,
   ) {
     config.max = 5;
     config.readonly = true;
   }
 
-  private params!: any;
+  public params!: any;
 
   public goodsItem$: Observable<any> = this.store.select(
     selectCurrentGoodsItem,
@@ -35,6 +36,7 @@ export class GoodsItemPageComponent implements OnInit {
       .pipe(
         tap((params) => {
           this.params = params;
+          console.log(params)
         }),
       )
       .subscribe();
@@ -59,5 +61,13 @@ export class GoodsItemPageComponent implements OnInit {
 
   public isInFavorite(id: string): boolean {
     return this.userService.isInFavorite(id);
+  }
+
+  public goToCategoryPage(): void {
+    this.router.navigate(['categories']);
+  }
+
+  public goToSubCategoryPage(): void {
+    this.router.navigate(['category', this.params.categoryId, this.params.subCategoryId]);
   }
 }

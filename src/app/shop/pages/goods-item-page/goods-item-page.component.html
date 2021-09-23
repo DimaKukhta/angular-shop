@@ -1,4 +1,8 @@
 <div class="container" *ngIf="goodsItem$ | async as goodsItem">
+  <div class="breadcrumbs">
+    <span (click)="goToCategoryPage()">{{ params.categoryId }}</span> /
+    <span (click)="goToSubCategoryPage()">{{ params.subCategoryId }}</span>
+  </div>
   <img
     class="discount"
     src="../../../../assets/star.png"

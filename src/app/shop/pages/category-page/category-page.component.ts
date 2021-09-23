@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { loadGoods } from 'src/app/redux/actions/goods.actions';
+import { ICategoryResponse } from 'src/app/redux/models/categories.model';
+import { selectAllCaregories } from 'src/app/redux/selectors/caregories.selectors';
 import { selectAllGoods } from 'src/app/redux/selectors/goods.selectors';
 import { UserService } from 'src/app/user/services/user.service';
+import { setCurrentCategory } from '../../../redux/actions/catigories.actions';
 
 @Component({
   selector: 'app-category-page',
@@ -17,9 +20,10 @@ export class CategoryPageComponent implements OnInit {
     public route: ActivatedRoute,
     private store: Store,
     private userService: UserService,
+    public router: Router
   ) {}
 
-  private params!: any;
+  public params!: any;
 
   public goods$: Observable<any> = this.store.select(selectAllGoods);
 
@@ -27,26 +31,16 @@ export class CategoryPageComponent implements OnInit {
 
   public currentTypeSort = 'rating';
 
+  public categories$ = this.store.select(selectAllCaregories);
+
+  public categories: Array<any> = [];
+
   public loadPreviosGoods(): void {
     this.startPosition -= 10;
-    this.store.dispatch(
-      loadGoods({
-        categoryId: this.params.categoryId,
-        subCategoryId: this.params.subCategoryId,
-        startPosition: this.startPosition,
-      }),
-    );
   }
 
   public loadNextGoods(): void {
     this.startPosition += 10;
-    this.store.dispatch(
-      loadGoods({
-        categoryId: this.params.categoryId,
-        subCategoryId: this.params.subCategoryId,
-        startPosition: this.startPosition,
-      }),
-    );
   }
 
   ngOnInit(): void {
@@ -61,9 +55,15 @@ export class CategoryPageComponent implements OnInit {
       loadGoods({
         categoryId: this.params.categoryId,
         subCategoryId: this.params.subCategoryId,
-        startPosition: this.startPosition,
       }),
     );
+    this.categories$
+      .pipe(
+        tap((categories) => {
+          this.categories = categories;
+        }),
+      )
+      .subscribe();
   }
 
   public isInCart(id: string) {
@@ -76,5 +76,9 @@ export class CategoryPageComponent implements OnInit {
 
   public setSortType(type: string): void {
     this.currentTypeSort = type;
+  }
+
+  public goToCategory(): void {
+    this.router.navigate(['categories']);
   }
 }

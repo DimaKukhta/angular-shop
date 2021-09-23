@@ -11,3 +11,8 @@ export const selectUserFavorite = createSelector(
   selectUserState,
   (state: any) => state.userInfo.favorites ? state.userInfo.favorites : [],
 );
+
+export const selectCurrentUser = createSelector(
+  selectUserState,
+  (state: any) => state.userInfo,
+);

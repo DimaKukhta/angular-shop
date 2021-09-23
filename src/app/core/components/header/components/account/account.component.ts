@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectCurrentUser } from 'src/app/redux/selectors/user.selector';
 
 @Component({
   selector: 'app-account',
@@ -8,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class AccountComponent {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private store: Store) { }
+
+  public user$ = this.store.select(selectCurrentUser);
 
   public goAuthPage = () => {
     this.router.navigate(['auth', 'login']);

@@ -11,7 +11,7 @@ export class GoodsEffects {
     this.actions$.pipe(
       ofType('[Goods] Load all goods'),
       mergeMap((action: any) =>
-        this.shop.getGoods(action.categoryId, action.subCategoryId, action.startPosition).pipe(
+        this.shop.getGoods(action.categoryId, action.subCategoryId).pipe(
           map((goods) => loadGoodsSuccess({ goods })),
           catchError(() => EMPTY),
         ),
