@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { forkJoin } from 'rxjs';
-import { catchError, map, mergeMap, tap } from 'rxjs/operators';
+import { catchError, map, mergeMap } from 'rxjs/operators';
 import { selectUserFavorite } from 'src/app/redux/selectors/user.selector';
 import { ShopService } from 'src/app/shop/services/shop.service';
 import { UserService } from '../../services/user.service';
@@ -23,15 +23,9 @@ export class FavoritePageComponent implements OnInit {
     this.userService.getUserInfo();
     this.favoriteItems$
       .pipe(
-        tap((array) => {
-          console.log(array);
-        }),
         map((array) =>
           array.map((element: string) => this.shopService.getGoodsItem(element)),
         ),
-        tap((array) => {
-          console.log(array);
-        }),
         mergeMap((array) => {
           return forkJoin(array);
         }),

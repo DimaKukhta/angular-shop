@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { setToken } from 'src/app/redux/actions/auth.actions';
+import { removeToken, setToken } from 'src/app/redux/actions/auth.actions';
+import { deleteUserInfo } from 'src/app/redux/actions/user.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +33,7 @@ export class AuthService {
       .pipe(
         tap((response: any) => {
           localStorage.setItem('token', response.token);
-          this.store.dispatch(setToken(response.token));
+          this.store.dispatch(setToken({ token: response.token }));
           this.router.navigate(['']);
           this.getWarning('Вы вошли в аккаунт');
         }),
@@ -79,5 +80,12 @@ export class AuthService {
       return token;
     } 
     return '';
+  }
+
+  public logout(): void {
+    localStorage.removeItem('token');
+    this.store.dispatch(deleteUserInfo());
+    this.store.dispatch(removeToken());
+    this.router.navigate(['auth', 'login']);
   }
 }

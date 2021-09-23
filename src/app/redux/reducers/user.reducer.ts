@@ -8,7 +8,11 @@ export const initialState: IUserState = {
 
 const reducer = createReducer(
   initialState,
-  on(UserActions.setUserInfo, (state, { userInfo }) => ({ ...state, userInfo })),
+  on(UserActions.setUserInfo, (state, { userInfo }) => ({
+    ...state,
+    userInfo,
+  })),
+  on(UserActions.deleteUserInfo, () => ({ userInfo: {} })),
 );
 
 export function userReducer(state: IUserState | undefined, action: Action) {

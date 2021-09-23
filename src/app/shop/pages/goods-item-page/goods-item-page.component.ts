@@ -36,7 +36,6 @@ export class GoodsItemPageComponent implements OnInit {
       .pipe(
         tap((params) => {
           this.params = params;
-          console.log(params)
         }),
       )
       .subscribe();
